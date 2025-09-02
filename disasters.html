@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Disaster Information</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 30px 0;
+      font-weight: 600;
+    }
+
+    /* ✅ Same Navbar as Quiz */
+    nav {
+      background: #000;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-shadow: 0 3px 6px rgba(119, 117, 117, 0.2);
+    }
+    .logo img {
+      height: 90px;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    nav ul li {
+      margin: 0 12px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #f0ad4e;
+    }
+
+    /* Disaster Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+    .card h3 {
+      margin-bottom: 10px;
+    }
+    .card p {
+      display: none;
+    }
+    .card.active p {
+      display: block;
+      margin-top: 10px;
+    }
+
+    /* Accordion */
+    .accordion {
+      max-width: 900px;
+      margin: 40px auto;
+    }
+    .accordion button {
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      outline: none;
+      border-radius: 6px;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
+    .accordion button:hover {
+      background: #0056b3;
+    }
+    .accordion .panel {
+      padding: 15px;
+      background: white;
+      display: none;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Checklist */
+    .checklist {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .checklist h3 {
+      margin-bottom: 15px;
+    }
+    .checklist label {
+      display: block;
+      padding: 8px 0;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #ddd;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #f0ad4e;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Same Navbar as Quiz -->
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="images/Logo.png" alt="Logo">
+    </a>
+    <ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="disasters.html">⚡ Disasters</a></li>
+      <li><a href="quiz.html">📝 Quiz</a></li>
+      <li><a href="contacts.html">📞Emergency Contacts</a></li>
+      <li><a href="about.html">ℹ️ About Us</a></li>
+    </ul>
+  </nav>
+
+  <h2>⚡ Disaster Information</h2>
+
+  <!-- Disaster Cards -->
+  <div class="cards">
+    <div class="card">
+      <h3>🌊 Flood</h3>
+      <p>Move to higher ground, avoid walking in water, turn off electricity.</p>
+    </div>
+    <div class="card">
+      <h3>🔥 Fire</h3>
+      <p>Use stairs, not elevators. Stop, drop & roll if clothes catch fire.</p>
+    </div>
+    <div class="card">
+      <h3>🌍 Earthquake</h3>
+      <p>Drop, cover, and hold on. Stay indoors until shaking stops.</p>
+    </div>
+    <div class="card">
+      <h3>😷 Pandemic</h3>
+      <p>Wear masks, wash hands, maintain distance, follow health advisories.</p>
+    </div>
+  </div>
+
+  <!-- FAQ Accordion -->
+  <div class="accordion">
+    <button>📦 What to pack in an emergency kit?</button>
+    <div class="panel">Water, food, flashlight, batteries, first aid kit, medications, important documents.</div>
+
+    <button>📡 How to stay informed during disasters?</button>
+    <div class="panel">Use government alert apps, local radio, and official websites for updates.</div>
+
+    <button>🚨 What to do if stuck in a flood?</button>
+    <div class="panel">Move to higher ground, avoid driving in water, call emergency services if needed.</div>
+  </div>
+
+  <!-- Interactive Checklist -->
+  <div class="checklist">
+    <h3>✅ Emergency Kit Checklist</h3>
+    <label><input type="checkbox"> Bottled Water (3-day supply)</label>
+    <label><input type="checkbox"> Non-perishable Food</label>
+    <label><input type="checkbox"> Flashlight & Extra Batteries</label>
+    <label><input type="checkbox"> First Aid Kit</label>
+    <label><input type="checkbox"> Emergency Medications</label>
+    <label><input type="checkbox"> Important Documents</label>
+  </div>
+
+  <!-- Footer -->
+   <footer class="text-center" style="background:#222; color:#fff; padding:20px; margin-top:40px;">
+    <p>&copy; 2025 🌍 Disaster Preparedness. All Rights Reserved.</p>
+    <p>💻 Built at Parul University Hackathon 2025 ❤️</p>
+    <p>
+      <a href="about.html" style="color:#9d9d9d;">ℹ️ About Us</a> |
+      <a href="contacts.html" style="color:#9d9d9d;">📞 Emergency contacts</a> |
+      <a href="quiz.html" style="color:#9d9d9d;">🧩 Quiz</a>
+    </p>
+  </footer>
+
+  <script>
+    // Card toggle
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('active');
+      });
+    });
+
+    // Accordion toggle
+    document.querySelectorAll('.accordion button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panel = btn.nextElementSibling;
+        panel.style.display = (panel.style.display === "block") ? "none" : "block";
+      });
+    });
+  </script>
+</body>
+</html>

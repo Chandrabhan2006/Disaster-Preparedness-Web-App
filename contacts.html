@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emergency Contacts</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* --- your CSS remains same --- */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f8fb;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    nav {
+      background: #222;
+      padding: 18px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+    .logo img { height: 40px; vertical-align: middle; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
+    nav ul li { margin: 0 12px; }
+    nav ul li a { color: #fff; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
+    nav ul li a:hover { color: #f0ad4e; }
+    h2 { text-align: center; margin: 20px 0; color: #007bff; }
+    table { width: 85%; margin: auto; border-collapse: collapse; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    table th, table td { padding: 12px; border: 1px solid #ddd; text-align: center; }
+    table th { background: #007bff; color: white; }
+    tr:hover { background: #f1f1f1; }
+    .copy-btn { background: #007bff; color: white; border: none; padding: 6px 10px; margin-left: 8px; border-radius: 5px; cursor: pointer; font-size: 12px; transition: background 0.3s; }
+    .copy-btn:hover { background: #0056b3; }
+    .search-container { text-align: center; margin: 15px; }
+    .search-container input { padding: 8px; width: 280px; border: 1px solid #007bff; border-radius: 5px; }
+    .highlight { background: yellow; font-weight: bold; }
+    .panic-btn { display: block; margin: 15px auto; padding: 15px 30px; font-size: 18px; font-weight: bold; color: white; background: red; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 0 10px rgba(255,0,0,0.6); animation: pulse 1s infinite; }
+    @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 10px rgba(255,0,0,0.6); } 50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255,0,0,0.8); } 100% { transform: scale(1); box-shadow: 0 0 10px rgba(255,0,0,0.6); } }
+    .quick-actions { text-align: center; margin: 20px; }
+    .quick-actions button { margin: 10px; padding: 12px 22px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s; }
+    .map-btn { background: #28a745; color: white; }
+    .map-btn:hover { transform: scale(1.05); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .sms-btn { background: #17a2b8; color: white; }
+    .sms-btn:hover { transform: scale(1.05); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .location-container { text-align: center; margin: 20px; }
+    .location-btn { padding: 12px 20px; font-size: 16px; font-weight: bold; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; transition: all 0.3s ease; }
+    .location-btn:hover { background: #0056b3; transform: scale(1.05); }
+    #location { margin-top: 10px; font-weight: bold; color: #333; }
+    footer { background:#222; color:#fff; padding:20px; margin-top:auto; text-align:center; }
+    footer a { color:#9d9d9d; text-decoration:none; margin:0 5px; }
+    footer a:hover { color:#f0ad4e; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="images/Logo.png" alt="Disaster Preparedness Logo">
+    </a>
+    <ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="disasters.html">⚡ Disasters</a></li>
+      <li><a href="quiz.html">📝 Quiz</a></li>
+      <li><a href="contacts.html">📞 Emergency Contacts</a></li>
+      <li><a href="about.html">ℹ️ About Us</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>📞 Emergency Contact Numbers</h2>
+
+    <!-- Search -->
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search service...">
+    </div>
+
+    <!-- Panic Button moved just below search -->
+    <button class="panic-btn" onclick="playAlarm()">🚨 PANIC BUTTON</button>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <button class="map-btn" onclick="window.open('https://www.google.com/maps/search/hospital+near+me')">🗺️ Find Nearest Hospital</button>
+      <button class="map-btn" onclick="window.open('https://www.google.com/maps/search/police+station+near+me')">🚓 Find Police Station</button>
+      <button class="sms-btn" onclick="alert('📩 SOS message sent to your emergency contacts!')">📩 Send SOS</button>
+    </div>
+
+    <!-- Location Awareness -->
+    <div class="location-container">
+      <button class="location-btn" onclick="getLocation()">📍 Detect My Location</button>
+      <p id="location"></p>
+    </div>
+  </main>
+
+  <!-- Emergency table -->
+  <table id="contactTable">
+    <tr><th>Service</th><th>Number</th></tr>
+    <tr><td>🚓 Police</td><td><a href="tel:100">100</a> <button class="copy-btn" onclick="copyNumber('100')">📋 Copy</button></td></tr>
+    <tr><td>🚒 Fire</td><td><a href="tel:101">101</a> <button class="copy-btn" onclick="copyNumber('101')">📋 Copy</button></td></tr>
+    <tr><td>🚑 Ambulance</td><td><a href="tel:102">102</a> <button class="copy-btn" onclick="copyNumber('102')">📋 Copy</button></td></tr>
+    <tr><td>⚡ Electricity Emergency</td><td><a href="tel:1912">1912</a> <button class="copy-btn" onclick="copyNumber('1912')">📋 Copy</button></td></tr>
+    <tr><td>🩺 Disaster Management Helpline</td><td><a href="tel:108">108</a> <button class="copy-btn" onclick="copyNumber('108')">📋 Copy</button></td></tr>
+    <tr><td>👩 Women Helpline</td><td><a href="tel:1091">1091</a> <button class="copy-btn" onclick="copyNumber('1091')">📋 Copy</button></td></tr>
+    <tr><td>👶 Child Helpline</td><td><a href="tel:1098">1098</a> <button class="copy-btn" onclick="copyNumber('1098')">📋 Copy</button></td></tr>
+    <tr><td>🔥 Gas Leak Emergency</td><td><a href="tel:1906">1906</a> <button class="copy-btn" onclick="copyNumber('1906')">📋 Copy</button></td></tr>
+    <tr><td>🌍 National Disaster Helpline</td><td><a href="tel:0111070">011-1070</a> <button class="copy-btn" onclick="copyNumber('0111070')">📋 Copy</button></td></tr>
+  </table>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 🌍 Disaster Preparedness. All Rights Reserved.</p>
+    <p>💻 Built at Parul University Hackathon 2025 ❤️</p>
+    <p>
+      <a href="about.html">ℹ️ About Us</a> |
+      <a href="contacts.html">📞 Emergency Contacts</a> |
+      <a href="quiz.html">🧩 Quiz</a>
+    </p>
+  </footer>
+
+  <script>
+    function copyNumber(num) {
+      navigator.clipboard.writeText(num).then(() => {
+        alert("✅ Number " + num + " copied to clipboard!");
+      });
+    }
+    function playAlarm() {
+      let audio = new Audio("https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg");
+      audio.play();
+      alert("🚨 Calling emergency services...");
+    }
+    document.getElementById("searchInput").addEventListener("keyup", function() {
+      let filter = this.value.toLowerCase();
+      let rows = document.querySelectorAll("#contactTable tr");
+      rows.forEach((row, index) => {
+        if(index === 0) return;
+        let serviceCell = row.cells[0];
+        let service = serviceCell.textContent.toLowerCase();
+        if(service.includes(filter)) {
+          row.style.display = "";
+          let regex = new RegExp("(" + filter + ")", "gi");
+          serviceCell.innerHTML = serviceCell.textContent.replace(regex, "<span class='highlight'>$1</span>");
+        } else {
+          row.style.display = "none";
+        }
+      });
+    });
+    function getLocation() {
+      const locationDiv = document.getElementById("location");
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+        locationDiv.innerText = "⏳ Detecting location...";
+      } else {
+        locationDiv.innerText = "❌ Geolocation not supported.";
+      }
+    }
+    function showPosition(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      const mapUrl = `https://www.google.com/maps?q=${lat},${lon}`;
+      document.getElementById("location").innerHTML =
+        `✅ Latitude: ${lat.toFixed(4)}, Longitude: ${lon.toFixed(4)} <br>
+        <a href="${mapUrl}" target="_blank">🗺️ View on Google Maps</a>`;
+    }
+    function showError(error) {
+      const locationDiv = document.getElementById("location");
+      switch(error.code) {
+        case error.PERMISSION_DENIED: locationDiv.innerText = "❌ Permission denied."; break;
+        case error.POSITION_UNAVAILABLE: locationDiv.innerText = "⚠️ Location unavailable."; break;
+        case error.TIMEOUT: locationDiv.innerText = "⏳ Request timed out."; break;
+        default: locationDiv.innerText = "❌ Unknown error.";
+      }
+    }
+  </script>
+</body>
+</html>

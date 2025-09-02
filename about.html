@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us - Team</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    nav {
+      background: #000;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+    .logo img {
+      height: 40px;
+      vertical-align: middle;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    nav ul li {
+      margin: 0 12px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #f0ad4e;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 30px 0;
+      color: #007bff;
+    }
+
+    /* Team Cards */
+    .team-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+    .team-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+    .team-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border: 3px solid #007bff;
+    }
+    .team-card h3 {
+      margin: 5px 0;
+      font-size: 18px;
+      color: #337ab7;
+    }
+    .team-card p {
+      font-size: 14px;
+      color: #555;
+      display: none;
+    }
+    .team-card.active p {
+      display: block;
+      margin-top: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background:#222;
+      color:#fff;
+      padding:20px;
+      margin-top:auto;
+      text-align:center;
+    }
+    footer a {
+      color:#9d9d9d;
+      text-decoration:none;
+      margin:0 5px;
+    }
+    footer a:hover {
+      color:#f0ad4e;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="images/Logo.png" alt="Disaster Preparedness Logo">
+    </a>
+    <ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="disasters.html">⚡ Disasters</a></li>
+      <li><a href="quiz.html">📝 Quiz</a></li>
+      <li><a href="contacts.html">📞 Emergency Contacts</a></li>
+      <li><a href="about.html">ℹ️ About Us</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>Meet Our Team 👨‍💻</h2>
+
+    <div class="team-container">
+      <div class="team-card">
+        <img src="images/Chandrabhan.jpeg" alt="Chandrabhan Singh">
+        <h3>Chandrabhan Singh</h3>
+        <p>Frontend developer focusing on responsive UI and accessibility.</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/Darshan.jpeg" alt="Darshan Jain">
+        <h3>Darshan Jain</h3>
+        <p>Backend specialist ensuring secure and smooth system functionality.</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/Gourav.jpeg" alt="Gourav Dadheech">
+        <h3>Gourav Dadheech</h3>
+        <p>Works on interactive content and engaging quizzes for users.</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/Siddharth.JPG" alt="Siddharth Dangi">
+        <h3>Siddharth Dangi</h3>
+        <p>Google Maps API integration for routes, safe zones, and distances.</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/Nishtha.jpeg" alt="Nishtha Paliwal">
+        <h3>Nishtha Paliwal</h3>
+        <p>Researches disaster preparedness strategies and awareness campaigns.</p>
+      </div>
+
+      <div class="team-card">
+        <img src="images/Aryan.jpeg" alt="Aryan Kumar Tiwari">
+        <h3>Aryan Kumar Tiwari</h3>
+        <p>Focuses on data visualization and real-time disaster reporting.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Unified Footer -->
+  <footer>
+    <p>&copy; 2025 🌍 Disaster Preparedness. All Rights Reserved.</p>
+    <p>💻 Built at Parul University Hackathon 2025 ❤️</p>
+    <p>
+      <a href="about.html">ℹ️ About Us</a> |
+      <a href="contacts.html">📞 Emergency Contacts</a> |
+      <a href="quiz.html">🧩 Quiz</a>
+    </p>
+  </footer>
+
+  <script>
+    // Toggle bio on click
+    document.querySelectorAll('.team-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
